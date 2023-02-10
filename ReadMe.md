@@ -31,7 +31,7 @@ If you have different headers, you can use [auto_table.py](auto_table), which wi
 - A template with **.docx** extension. This template requires **{{** example **}}** to be present so that you can replace it with the input you will give. The [Template_Sample.docx](template/Template_Sample.docx) file is just an example to show how the script works. Once you understand how it works you can modify the template or script to suit your needs.
 
 Once you have this 2 things, you can run the script `python3 re_automater.py` .
-It will ask you 9 input:
+It will ask you 10 input:
 
 1) `Enter the path of the Excel file: ` - Here it is important that you have file with **.xlsx** extension not csv.
 2) `Please enter the name of the sheet: ` - You must know the name of the sheet where your table is.
