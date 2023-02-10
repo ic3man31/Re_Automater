@@ -20,7 +20,7 @@ Once done, to install all the packages/library you need run the following comman
 
 Before running the script is important that you have the following things:
 
--  **.xlsx** file extension, not csv, which contains the table you want to insert into the table in [Template_Sample.docx](Template/Template_Sample.docx). Specifically, the latter table has the following headers.
+-  **.xlsx** file extension, not csv, which contains the table you want to insert into the table in [Template_Sample.docx](template/Template_Sample.docx). Specifically, the latter table has the following headers.
 
 | Item | ID  | Risk | Name | CVE | System | Description | CVSS_Base_Score | CVSS_Temporal_Score | Solution |
 | ---- | --- | ---- | ---- | --- | ------ | ----------- | --------------- | ------------------- | -------- |
@@ -28,7 +28,7 @@ Before running the script is important that you have the following things:
 
 If you have different headers, you can use [auto_table.py](auto_table), which will create a table in a new .docx file by entering the data from the .xlsx file you gave. Or you can edit the script to suit your needs.
 
-- A template with **.docx** extension. This template requires **{{** example **}}** to be present so that you can replace it with the input you will give. The [Template_Sample.docx](Template/Template_Sample.docx) file is just an example to show how the script works. Once you understand how it works you can modify the template or script to suit your needs.
+- A template with **.docx** extension. This template requires **{{** example **}}** to be present so that you can replace it with the input you will give. The [Template_Sample.docx](template/Template_Sample.docx) file is just an example to show how the script works. Once you understand how it works you can modify the template or script to suit your needs.
 
 Once you have this 2 things, you can run the script `python3 re_automater.py` .
 It will ask you 9 input:
@@ -50,7 +50,7 @@ It will ask you 9 input:
 
 ## License
 
-[License](License/LICENSE)
+[License](LICENSE)
 
 
 
