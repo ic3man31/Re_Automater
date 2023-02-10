@@ -20,7 +20,7 @@ Once done, to install all the packages/library you need run the following comman
 
 Before running the script is important that you have the following things:
 
--  **.xlsx** file extension, not csv, which contains the table you want to insert into the table in [Template_Sample.docx](template/Template_Sample.docx). Specifically, the latter table has the following headers, as you can see on [Sample Vulnerability Execel.xlsx](template/Sample Vulnerability Execel.xlsx)
+-  **.xlsx** file extension, not csv, which contains the table you want to insert into the table in [Template_Sample.docx](template/Template_Sample.docx). Specifically, the latter table has the following headers, as you can see on [Sample Vulnerability Execel.xlsx](template/Sample Vulnerability Excel.xlsx)
 
 | Item | ID  | Risk | Name | CVE | System | Description | CVSS_Base_Score | CVSS_Temporal_Score | Solution |
 | ---- | --- | ---- | ---- | --- | ------ | ----------- | --------------- | ------------------- | -------- |
