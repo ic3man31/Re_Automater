@@ -4,8 +4,15 @@ Version 1:0
 
 The aim of this script is to automate the creation of a Report for Vulnerability Assessment or Penetration Test activities.
 It doesn't automate everything, you still need to get your hands dirty.
-For now the script can completely run on **Windows OS**, with other OS may you encounter some issue. In the next versions I'm going to resolve this thing.
 *Feedbacks are always welcome.*
+
+## Requirements
+
+For now the script can completely run on **Windows OS**, with other OS may you encounter some issue. In the next versions I'm going to resolve this thing.
+Besides the installation of [requirements.txt](requirements.txt) these are the other requirements:
+
+- Windows OS
+- Microsoft Word and Excel installed
 
 
 ## Installation
