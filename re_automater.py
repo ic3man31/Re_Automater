@@ -1,5 +1,6 @@
 import openpyxl
 import os
+import time
 from docxtpl import DocxTemplate
 from docx import Document
 import win32com.client
@@ -31,6 +32,7 @@ def banner():
     print(banner_text)
 
 banner()
+time.sleep(3)
 excel_file_path = input('\nEnter the path of the Excel file: ').strip("'").strip('"')
 sh_name = input("\nPlease enter the name of the sheet: ")
 temp_path = input('\nPlease enter the template .docx you want to use: ').strip("'").strip('"')
@@ -38,13 +40,22 @@ root, ext = os.path.splitext(temp_path)
 if ext != ".docx":
     temp_path = root + ".docx"
 
-# Open the Excel workbook and get the sheet
+# Escape Special Characters on xlsx file
 wb = openpyxl.load_workbook(excel_file_path)
 sheet = wb[sh_name]
 
+for row in sheet.iter_rows():
+    for cell in row:
+        if isinstance(cell.value, str):
+            cell.value = cell.value.replace('>', '&gt;')
+            cell.value = cell.value.replace('<', '&lt;')
+            cell.value = cell.value.replace('<=', '&lt;=')
+            cell.value = cell.value.replace('>=', '&gt;=')
+
+wb.save(excel_file_path)
+
  ### Create Pivot Table as png
 
- # Load data from excel file
 df = pd.read_excel(excel_file_path, sheet_name=sh_name)
 pivot_table = pd.pivot_table(df, values='Item', index='Risk', aggfunc='count')
 
@@ -53,7 +64,7 @@ pivot_table = pivot_table.reindex(['Critical', 'High', 'Medium', 'Low'])
 
 # Create chart
 fig, ax = plt.subplots()
-pivot_table.plot.bar(title='Risk vs Item of Vulnerabilities', legend=False, grid=True, ax=ax)
+pivot_table.plot.bar(title='Vulnerabilities x Risk', legend=False, grid=True, ax=ax)
 plt.xlabel('Risk')
 plt.ylabel('Item of Vulnerabilities')
 
@@ -119,22 +130,22 @@ ask_fin = input('\nSelect the name of the final .docx output: ').strip("'").stri
 root, ext = os.path.splitext(ask_fin)
 if ext != ".docx":
     ask_fin = root + ".docx"
-
+time.sleep(2)
 template.save(ask_fin)
-
+time.sleep(2)
 ############# Edit Layout #######################
 
-print('\nNow we are going to iterate with the Table and the Layout of the page [...]')
-
 # Load the document
+time.sleep(3)
 docu = Document(ask_fin)
 
 # Get the 6th table
 table = docu.tables[5]
 
 # Change the table to landscape orientation
-proceed = input("\nDo you want to proceed with LANDSCAPE LAYOUT for the Word Document(docx) ? (y/n): ")
+proceed = input("\nDo you want to proceed with LANDSCAPE LAYOUT for the whole Word Document(docx) ? (y/n): ")
 if proceed.lower() == "y":
+    print('\nNow we are going to iterate with the Layout of the page [...]')
     section = docu.sections[0]
     new_width, new_height = section.page_height, section.page_width
     section.page_width = new_width
@@ -165,6 +176,7 @@ def delete_columns(table, columns):
 delete_columns(table, [0])
 
 # Save the modified document
+time.sleep(2)
 docu.save(ask_fin)
 
 ############# Color the Cell of Risk column #################
@@ -199,13 +211,14 @@ for row in range(1, table.Rows.Count + 1):
 doc.Save()
 doc.Close()
 word.Quit()
+time.sleep(3)
 
 ##### Generating Pivot Table in a new Excel file between Item and Risk ##########
 
 print('\nGenerating Pivot Table in a new xlsx file [....]')
 
 # Load data from excel file
-
+time.sleep(3)
 df = pd.read_excel(excel_file_path, sheet_name=sh_name)
 
 # Create pivot table
@@ -231,10 +244,10 @@ data = Reference(sheet, min_col=2, min_row=1, max_col=2, max_row=len(pivot_table
 categories = Reference(sheet, min_col=1, min_row=2, max_row=len(pivot_table)+1, max_col=1)
 
 chart = BarChart3D()
-chart.title = "Risk vs Number of Vulnerabilities"
+chart.title = "Vulnerabilities x Risk"
 chart.add_data(data, titles_from_data=True)
 chart.set_categories(categories)
 chart.has_table = True
 
 sheet.add_chart(chart, "E2")
-writer.save()
+writer.save() 
