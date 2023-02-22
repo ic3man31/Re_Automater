@@ -93,7 +93,7 @@ for row in range(1, table.Rows.Count + 1):
         word.Selection.Range.Shading.BackgroundPatternColor = 39423
     # If the cell contains the letter Y, color it yellow
     elif "L" in text:
-        word.Selection.Range.Shading.BackgroundPatternColor = 10092543
+        word.Selection.Range.Shading.BackgroundPatternColor = 65535
 
 # Save and close the document
 doc.Save()
