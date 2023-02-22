@@ -140,7 +140,7 @@ time.sleep(3)
 docu = Document(ask_fin)
 
 # Get the 6th table
-table = docu.tables[5]
+table = docu.tables[4]
 
 # Change the table to landscape orientation
 proceed = input("\nDo you want to proceed with LANDSCAPE LAYOUT for the whole Word Document(docx) ? (y/n): ")
@@ -186,7 +186,7 @@ word = win32com.client.Dispatch("Word.Application")
 doc = word.Documents.Open(ask_fin)
 
 # Select the table
-table = doc.Tables(6)
+table = doc.Tables(5)
 
 # Iterate through the rows of the table
 for row in range(1, table.Rows.Count + 1):
