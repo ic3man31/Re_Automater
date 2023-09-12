@@ -1,8 +1,18 @@
 # Re_Automater
 
-Version 1:0
+Version 1.0
 
-The aim of this script is to automate the creation of a Report for Vulnerability Assessment or Penetration Test activities.
+Re_Automater v1.0 is a Python script that automates the creation of a report document from an Excel file containing vulnerability data. This script performs several tasks, including:
+
+1. Escaping special characters in the Excel file to prevent rendering issues.
+2. Creating a bar chart representing vulnerabilities by risk level and saving it as `chart.png`.
+3. Filling in a Word document template with the data from the Excel file and the generated chart.
+4. Modifying the layout of the Word document, including changing it to landscape orientation.
+5. Removing double spaces in the document.
+6. Deleting the first column (Index) from a specific table in the document.
+7. Coloring cells in the "Risk" column based on their contents (Critical: dark red, High: red, Medium: orange, Low: yellow).
+8. Generating a pivot table in a new Excel file to summarize vulnerabilities by risk level and creating a 3D bar chart from the pivot table
+
 It doesn't automate everything, you still need to get your hands dirty.
 *Feedbacks are always welcome.*
 
